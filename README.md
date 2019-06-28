@@ -11,9 +11,10 @@ Casters, analysts and players can then view match, player, hero and item statist
 ## Deployment
 The whole app is launched via `docker-compose`, and the front-end is accessible on port [5000](http://localhost:5000).
 ```
+docker-compose build
 docker-compose up
 ```
---TODO docker volume mounts
+
 ## Architecture
 Ascendant is made up of 5 components:
 * Web front-end (Python/Flask)
