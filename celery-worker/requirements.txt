@@ -1,0 +1,4 @@
+celery
+mysql.connector
+requests
+redis
