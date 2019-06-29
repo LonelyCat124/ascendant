@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, flash
 import mysql.connector
 import os
 from werkzeug.utils import secure_filename
@@ -11,13 +11,12 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    task = worker.send_task("tasks.add_to_db", args = ["test.dem"])
-    return "Task queued!"
+    return render_template("homepage.html", title = "Homepage")
 
 @app.route("/add-match", methods = ["GET", "POST"])
 def add_match():
     if request.method == "GET":
-        return render_template("add-match.html")
+        return render_template("add_match.html", title = "Upload a replay")
     elif request.method == "POST":
         file = request.files["file"]
 
@@ -38,7 +37,15 @@ def add_match():
 
             worker.send_task("tasks.parse_and_store", args = [replay_filename, metadata_filename])
 
-            return "Replay uploaded!"
+            flash("Replay uploaded!")
+            return render_template("add_match.html", title = "Upload a replay")
 
         else:
-            return "Error"
+            flash("Error!")
+            return render_template("add_match.html", title = "Upload a replay")
+
+@app.route("/team/<team>")
+def view_team(team: str):
+    with ApiClient() as client:
+        team = client.team_results(team)
+        return render_template("team.html", title = team.name, team = team)

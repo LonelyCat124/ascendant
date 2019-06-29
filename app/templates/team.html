@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>Team: {{ title }}</h1>
+{% endblock %}
+
+{% block content %}
+Record: {{ team.wins }} - {{ team.losses }}
+Radiant: {{ team.radiant_wins }} wins - {{ team.radiant_losses}}
+Dire: {{ team.dire_wins }} wins - {{ team.dire_losses }}
+Matches:
+{% for match in team.matches %}
+{% endfor %}
+Picks:
+{% for hero in team.picks %}
+{% endfor %}
+Bans:
+{% for ban in team.bans %}
+{% endfor %}
+{% endblock %}

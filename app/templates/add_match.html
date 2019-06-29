@@ -1,6 +1,10 @@
-<!DOCTYPE html>
-<title>Add a match</title>
-<h1>Upload a replay file</h1>
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{{ title }}</h1>
+{% endblock %}
+
+{% block content %}
 <form method=post enctype=multipart/form-data target=/add-match/success>
     <input type=text name=replay_id>
     <input type=text name=radiant_team value = "Radiant Team Name">
@@ -8,3 +12,4 @@
     <input type=file name=file>
     <input type=submit value=upload>
 </form>
+{% endblock %}
