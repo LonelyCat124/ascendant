@@ -1,7 +1,11 @@
+from replay_summary import ReplaySummariser
 import mysql.connector
 
-class ApiClient():
-    def __init__(self):
+class DbClient():
+
+    def __init__(self, rs: ReplaySummariser) -> None:
+        self.rs = rs
+
         config = {
             'user': 'root',
             'password': 'root',
@@ -9,9 +13,9 @@ class ApiClient():
             'port': '3306',
             'database': 'ascendant'
         }
-        self.conn = mysql.connector.connect(**config)
-        self.cursor = self.conn.cursor()
-        
+        self._conn = mysql.connector.connect(**config)
+        self._cursor = self._conn.cursor()
+
     # https://stackoverflow.com/questions/865115/how-do-i-correctly-clean-up-a-python-object
     def __enter__(self):
         return self
@@ -19,3 +23,7 @@ class ApiClient():
     def __exit__(self, exc_type, exc_value, traceback):
         self._cursor.close()
         self._conn.close()
+
+    def insert(self) -> None:
+        # Inserts the parsed data into the DB
+        raise NotImplementedError
