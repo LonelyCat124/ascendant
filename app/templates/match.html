@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{{ match.radiant_team }} - {{ match.dire_team }}</h1>
+{% endblock %}
+
+{% block content %}
+Winner: {{ match.winner }} - {{ match.radiant_kills }}: {{ match.dire_kills }}
+<br>
+Duration: {{ match.duration }}
+<br>
+Radiant:
+<br>
+{% for hero in match.heroes.radiant %}
+<div class = "hero">
+  Hero: {{ hero.name }}
+  <br>
+  KDA: {{ hero.kills }} - {{ hero.deaths }} - {{ hero.assists }}
+  <br>
+  Avg GPM: {{ hero.gpm }}
+  <br>
+  Avg XPM: {{ hero.xpm }}
+  <br>
+</div>
+{% endfor %}
+Dire:
+<br>
+{% for hero in match.heroes.dire %}
+<div class = "hero">
+  Hero: {{ hero.name }}
+  <br>
+  KDA: {{ hero.kills }} - {{ hero.deaths }} - {{ hero.assists }}
+  <br>
+  Avg GPM: {{ hero.gpm }}
+  <br>
+  Avg XPM: {{ hero.xpm }}
+  <br>
+</div>
+{% endfor %}

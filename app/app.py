@@ -49,3 +49,15 @@ def view_team(team: str):
     with ApiClient() as client:
         team = client.team_results(team)
         return render_template("team.html", title = team['name'], team = team)
+
+@app.route("/player/<player>")
+def view_player(player: str):
+    with ApiClient() as client:
+        player = client.player_results(player)
+        return render_template("player.html", title = player['name'], player = player)
+
+@app.route("match/<match_id>")
+def view_match(match_id: int):
+    with ApiClient() as client:
+        match = client.match_results(match_id)
+        return render_template("match.html", title = f"{match['radiant_team']} - {match['dire_team']}", match = match)

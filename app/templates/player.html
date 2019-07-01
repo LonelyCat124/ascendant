@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>Team: {{ title }}</h1>
+{% endblock %}
+
+{% block content %}
+Record: {{ player.wins }} - {{ player.losses }}
+<br>
+KDA: {{ player.kills }} - {{ player.deaths }} - {{ player.assists }}
+<br>
+Biggest kill streak: {{ player.kill_streak }}
+<br>
+GPM: {{ player.gpm }}
+<br>
+XPM: {{ player.xpm }}
+<br>
+<h2>Heroes:</h2>
+<br>
+{% for hero in player.heroes %}
+<div class = "hero">
+  Hero: {{ hero.name }}
+  <br>
+  Results: {{ hero.wins }} - {{ hero.losses }}
+  <br>
+  Avg KDA: {{ hero.kills }} - {{ hero.deaths }} - {{ hero.assists }}
+  <br>
+  Avg GPM: {{ hero.gpm }}
+  <br>
+  Avg XPM: {{ hero.xpm }}
+  <br>
+</div>
+{% endfor %}

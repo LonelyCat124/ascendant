@@ -43,6 +43,7 @@ CREATE TABLE IF NOT EXISTS matches(
 
 CREATE TABLE IF NOT EXISTS player_matches(
     match_id BIGINT REFERENCES matches(match_id) ON DELETE CASCADE,
+    hero VARCHAR(1023),
     player VARCHAR(1023) NOT NULL,
     team VARCHAR(1023),
     won BOOLEAN,
