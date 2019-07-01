@@ -27,12 +27,12 @@ def add_match():
 
             metadata = {
                 "replay_id": replay_id,
-                "radiant_team": request.form["radiant_team"]
+                "radiant_team": request.form["radiant_team"],
                 "dire_team": request.form["dire_team"] 
             }
             metadata_filename = secure_filename(replay_id + "_meta.json")
 
-            with open(secure_filename(metadata_filename, "w") as f:
+            with open(secure_filename(metadata_filename), "w") as f:
                 json.dump(metadata, f)
 
             worker.send_task("tasks.parse_and_store", args = [replay_filename, metadata_filename])
@@ -48,4 +48,4 @@ def add_match():
 def view_team(team: str):
     with ApiClient() as client:
         team = client.team_results(team)
-        return render_template("team.html", title = team.name, team = team)
+        return render_template("team.html", title = team['name'], team = team)

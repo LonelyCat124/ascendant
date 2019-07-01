@@ -1,7 +1,7 @@
 import mysql.connector
 from typing import List, Dict, Any
 
-Response = Dict[str, Any]
+Result = Dict[str, Any]
 
 class ApiClient():
     def __init__(self):
@@ -10,10 +10,11 @@ class ApiClient():
             'password': 'root',
             'host': 'db',
             'port': '3306',
-            'database': 'ascendant'
+            'database': 'ascendant',
+            'auth_plugin': 'mysql_native_password'
         }
-        self.conn = mysql.connector.connect(**config)
-        self.cursor = self.conn.cursor()
+        self._conn = mysql.connector.connect(**config)
+        self._cursor = self._conn.cursor()
         
     # https://stackoverflow.com/questions/865115/how-do-i-correctly-clean-up-a-python-object
     def __enter__(self):
@@ -29,7 +30,7 @@ class ApiClient():
             "name": "Lost Mid, Again",
             "wins": 5,
             "losses": 3,
-            "radiant_wins", 4,
+            "radiant_wins": 4,
             "radiant_losses": 0,
             "dire_wins": 1,
             "dire_losses": 3,

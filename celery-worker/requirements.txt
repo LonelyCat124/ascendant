@@ -1,4 +1,4 @@
 celery
-mysql.connector
+mysql-connector-python
 requests
 redis
