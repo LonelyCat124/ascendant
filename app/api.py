@@ -50,12 +50,14 @@ class ApiClient():
                 {
                     "name": "Pudge",
                     "picks": 8,
-                    "wins": 2
+                    "wins": 2,
+                    "winrate": "25%"
                 },
                 {
                     "name": "Sven",
                     "picks": 5,
-                    "wins": 4
+                    "wins": 4,
+                    "winrate": "80%"
                 }
             ],
             "bans": [

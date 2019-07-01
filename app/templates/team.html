@@ -6,15 +6,39 @@
 
 {% block content %}
 Record: {{ team.wins }} - {{ team.losses }}
+<br>
 Radiant: {{ team.radiant_wins }} wins - {{ team.radiant_losses}}
+<br>
 Dire: {{ team.dire_wins }} wins - {{ team.dire_losses }}
-Matches:
-{% for match in team.matches %}
+<br>
+<h2>Matches:</h2>
+<br>
+{% for match in team['matches'] %}
+<div class = "match">
+  Against: {{ match['against'] }}
+  <br>
+  Result: {{ match['result'] }}
+  <br>
+</div>
 {% endfor %}
-Picks:
-{% for hero in team.picks %}
+<h2>Picks:</h2>
+{% for pick in team['picks'] %}
+<div class = "pick">
+  Hero: {{ pick['name'] }}
+  <br>
+  Picks: {{ pick['picks'] }}
+  <br>
+  Winrate: {{ pick['winrate'] }}
+  <br>
+</div>
 {% endfor %}
-Bans:
-{% for ban in team.bans %}
+<h2>Bans:</h2>
+{% for ban in team['bans'] %}
+<div class = "ban">
+  Hero: {{ ban['name'] }}
+  <br>
+  Banned: {{ ban['bans'] }}
+  <br>
+</div>
 {% endfor %}
 {% endblock %}
