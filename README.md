@@ -1,5 +1,5 @@
 # Ascendant
-Ascendant is a Dota 2 inhouse league visualisation app. It uses OpenDota's [replay parser](https://github.com/odota/parser/) and provides an interface for viewing statistics from the parsed matches. 
+Ascendant is an app for showing statistics for Dota 2 inhouse leagues. It uses OpenDota's [replay parser](https://github.com/odota/parser/) and provides an interface for viewing statistics from the parsed matches. 
 
 Ascendant is designed to help casters and analysts who are part of a small / medium inhouse league. It's not set up to be a large scale automated replay parser, and it's unlikely to ever be. 
 
