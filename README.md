@@ -19,7 +19,7 @@ docker-compose up
 Ascendant is made up of 5 components:
 * Web front-end (Python/Flask)
 * Replay parser (OpenDota's Java parser)
-* Database (MySQL)
+* Database (MariaDB)
 * Task & message queue (Redis)
 * Task worker (Python/Celery)
 
