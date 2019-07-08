@@ -27,10 +27,11 @@ def parse_and_store(replay_file: str, metadata_file: str) -> bool:
         json.dump(parsed_replay, response)
 
     # extract match data from the parsed replay
-    rs = ReplaySummariser(parsed_replay)
+    rs = ReplaySummariser(metadata.replay_id + "_parsed.json")
 
     # send to DB table
     with DbClient(rs) as dbc:
-        dbc.insert()
+        dbc.insert_match()
+        dbc.insert_players()
     
     return True

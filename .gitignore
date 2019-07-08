@@ -8,3 +8,6 @@ data/replays/*.json
 
 .DS_Store
 *.DS_Store
+
+.idea/
+.idea/*

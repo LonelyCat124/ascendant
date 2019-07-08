@@ -4,6 +4,10 @@ import mysql.connector
 class DbClient():
 
     def __init__(self, rs: ReplaySummariser) -> None:
+        """
+        Takes a summarised replay `ReplaySummariser` and inserts the results into the DB
+        :param rs: ReplaySummariser A summarised match replay
+        """
         self.rs = rs
 
         config = {
@@ -24,6 +28,17 @@ class DbClient():
         self._cursor.close()
         self._conn.close()
 
-    def insert(self) -> None:
-        # Inserts the parsed data into the DB
+    def insert_match(self) -> None:
+        """
+        Inserts the match summary into the DB
+        :return: None
+        """
+
+        raise NotImplementedError
+
+    def insert_players(self) -> None:
+        """
+        Inserts the player summaries into the DB
+        :return: None
+        """
         raise NotImplementedError
